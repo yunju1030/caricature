@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.vercel/
+.openai/
+public/
+coverage/
+*.log
+*.pem
+*.key
+*-deploy.tar.gz

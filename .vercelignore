@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+.openai
+test
+README.md

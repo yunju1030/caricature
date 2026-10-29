@@ -1,0 +1,26 @@
+{
+  "name": "morph-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node local.js",
+    "dev": "node --watch local.js",
+    "build": "node scripts/prepare-vercel.js",
+    "test": "node --test",
+    "check": "node --check local.js && node --check src/app.js && node --check src/services/transform.js && node --check src/services/openai-images.js && node --check dist/app.js && node --check dist/api.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "multer": "^2.5.0",
+    "openai": "^7.45.1",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.1"
+  }
+}
