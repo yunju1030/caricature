@@ -95,8 +95,8 @@ const imageBytes = Buffer.from(result.data[0].b64_json, 'base64');
 아직 Vercel에 배포하지 않았습니다. 기존 Sites URL은 이전 프론트엔드 데모이며 이 Node 서버와 연결되지 않습니다.
 
 1. `yunju1030/caricature` 저장소를 Vercel로 가져오고 **Root Directory는 저장소 루트(`.`)**로 설정하세요. 프로젝트가 다른 저장소의 하위 폴더에 있다면 해당 `morph-studio` 폴더를 선택하세요.
-2. Framework Preset은 Express를 사용합니다. Node.js 22 이상을 선택하고, 별도 정적 Output Directory를 지정하지 마세요.
-3. `vercel.json`의 빌드가 `dist/`를 `public/`로 복사합니다. API는 `src/app.js`의 default export로 실행됩니다. `public/`는 자동 생성 파일이므로 직접 수정하지 마세요.
+2. Framework Preset은 **Other**를 사용합니다. `vercel.json`에서 `framework: null`, Output Directory `public`을 지정합니다. Node.js 22 이상을 선택하세요. 대시보드에 `/api/*`를 `/index.html`로 보내는 Rewrite가 있다면 제거하세요.
+3. 빌드가 `dist/`를 `public/`로 복사하고, `api/health.js`, `api/config.js`, `api/transform.js`를 각각 Node.js Function으로 배포합니다. 세 진입점은 같은 Express 앱을 사용합니다. `public/`는 자동 생성 파일이므로 직접 수정하지 마세요. Function 실행 시간은 200초로 설정하며 Fluid Compute가 활성화된 환경을 기준으로 합니다.
 4. Vercel 환경 변수에 `IMAGE_PROVIDER=openai`와 `OPENAI_API_KEY`를 등록하세요. 로컬 `.env`는 배포하지 않습니다. 비용이 발생하는 API를 공개하기 전에는 서비스에 맞는 사용자 인증·호출 제한을 추가하세요.
 5. 배포 후 `/`, `/api/health`, 파일 업로드를 확인하세요. `HOST`와 `PORT`는 로컬 실행용이며 Vercel에는 필요하지 않습니다.
 
